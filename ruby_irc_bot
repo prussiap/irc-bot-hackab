@@ -1,0 +1,21 @@
+require 'cinch'
+
+bot = Cinch::Bot.new do
+  configure do |c|
+    c.nick = "hello_there"
+    c.server = "irc.freenode.org"
+    c.channels = ["#flipstone"]
+  end
+
+  on :message, "hello" do |m|
+    m.reply "Hello, #{m.user.nick}"
+  end
+
+  on :message, "foo" do |m|
+    m.reply "Bar, Be more original #{m.user.nick}"
+  end
+
+end
+
+bot.start
+

@@ -1,1 +1,3 @@
+.rvmrc*
 .vagrant/
+append_name_to_announce.txt

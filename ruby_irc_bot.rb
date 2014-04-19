@@ -1,10 +1,12 @@
 require 'cinch'
+require 'front_door_announcer'
 
 bot = Cinch::Bot.new do
   configure do |c|
     c.nick = "hello_there"
     c.server = "irc.freenode.org"
-    c.channels = ["#flipstone"]
+    c.channels = ["#hacklab"]
+    c.plugins.plugins = [FrontDoorAnnouncer]
   end
 
   on :message, "hello" do |m|
@@ -17,5 +19,6 @@ bot = Cinch::Bot.new do
 
 end
 
+Thread.new { DoorbellListener.new(bot).start }
 bot.start
 
